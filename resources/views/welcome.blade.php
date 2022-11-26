@@ -14,8 +14,12 @@
     </head>
     <body class="antialiased bg-gray-900" >
         <div class="max-w-7xl mx-auto">
-            <div class="flex justify-between m-2 p-2">
-                <form action=""></form>
+            <div class="flex justify-between m-2 p-2 bg-slate-700">
+                <form action="{{ route('import') }}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    <input type="file" name="users" required>
+                    <button type="submit" class="px-4 py-2 bg-indigo-500 hover:bg-indigo-700 text-white rounded-md">Import</button>
+                </form>
                 <a href="{{ route('export') }}" class="px-4 py-2 bg-indigo-500 hover:bg-indigo-700 text-white rounded-md">Export</a>
             </div>
             <x-users-table :users="$users" />
