@@ -22,7 +22,7 @@ class ExcelController extends Controller
     }
     public function import(Request $request) 
     {
-        $request->validate(['users' => ['required']]);
+        $request->validate(['users' => ['required', 'file']]);
         Excel::import(new UsersImport, $request->file('users'));
         
         return redirect('/')->with('success', 'All good!');
